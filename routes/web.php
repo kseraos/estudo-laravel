@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('pessoas', 'PessoaControle@index');
+Route::get('pessoas/create', 'PessoaControle@create');
+Route::post('pessoas', 'PessoaControle@store');
