@@ -54,7 +54,8 @@ class PessoaControle extends Controller
      */
     public function edit($id)
     {
-        //
+        $pessoa= \App\Pessoa::find($id);
+        return view('pessoas.form', compact('pessoa'));
     }
 
     /**
@@ -66,7 +67,14 @@ class PessoaControle extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pessoa= \App\Pessoa::find($id);
+        
+        $pessoa->nome =$request->nome;
+        $pessoa->telefone=$request->telefone;
+        $pessoa->email =$request->email;
+
+        $pessoa->save();
+        return redirect('/pessoas');
     }
 
     /**

@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('pessoas', 'PessoaControle@index');
 Route::get('pessoas/create', 'PessoaControle@create');
 Route::post('pessoas', 'PessoaControle@store');
+Route::get('pessoas/{pessoa}/edit', 'PessoaControle@edit');
+Route::put('pessoas/{pessoa}', 'PessoaControle@update');
