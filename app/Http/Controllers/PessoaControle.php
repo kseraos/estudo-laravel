@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Pessoa;
 
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class PessoaControle extends Controller
     public function index()
     {
         //$pessoas = \App\Pessoa::all();
-        $pessoas = \App\Pessoa::paginate (10);
+        $pessoas = Pessoa::paginate (10);
         return view('pessoas.index', compact('pessoas'));
     }
 
@@ -26,7 +27,7 @@ class PessoaControle extends Controller
    
     public function store(Request $request)
     {
-        $pessoa= new \App\Pessoa();
+        $pessoa= new Pessoa();
         $pessoa->nome =$request->nome;
         $pessoa->telefone=$request->telefone;
         $pessoa->email =$request->email;
@@ -35,34 +36,21 @@ class PessoaControle extends Controller
         return redirect('/pessoas');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $pessoa= \App\Pessoa::find($id);
+        $pessoa= Pessoa::find($id);
         return view ('pessoas.show', compact('pessoa'));
     }
 
     public function edit($id)
     {
-        $pessoa= \App\Pessoa::find($id);
+        $pessoa= Pessoa::find($id);
         return view('pessoas.form', compact('pessoa'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        $pessoa= \App\Pessoa::find($id);
+        $pessoa= Pessoa::find($id);
 
         $pessoa->nome =$request->nome;
         $pessoa->telefone=$request->telefone;
@@ -72,15 +60,9 @@ class PessoaControle extends Controller
         return redirect('/pessoas');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $pessoa= \App\Pessoa::find($id);
+        $pessoa= \Pessoa::find($id);
 
         $pessoa->delete();
         
