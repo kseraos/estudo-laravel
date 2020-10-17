@@ -23,3 +23,7 @@ Route::get('pessoas/create', 'PessoaControle@create');
 Route::post('pessoas', 'PessoaControle@store');
 Route::get('pessoas/{pessoa}/edit', 'PessoaControle@edit');
 Route::put('pessoas/{pessoa}', 'PessoaControle@update');
+Route::get('pessoas/{pessoa}', 'PessoaControle@show');
+Route::delete('pessoas/{pessoa}', 'PessoaControle@destroy');
+
+

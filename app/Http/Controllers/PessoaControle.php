@@ -43,15 +43,10 @@ class PessoaControle extends Controller
      */
     public function show($id)
     {
-        //
+        $pessoa= \App\Pessoa::find($id);
+        return view ('pessoas.show', compact('pessoa'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $pessoa= \App\Pessoa::find($id);
@@ -68,7 +63,7 @@ class PessoaControle extends Controller
     public function update(Request $request, $id)
     {
         $pessoa= \App\Pessoa::find($id);
-        
+
         $pessoa->nome =$request->nome;
         $pessoa->telefone=$request->telefone;
         $pessoa->email =$request->email;
@@ -85,6 +80,10 @@ class PessoaControle extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pessoa= \App\Pessoa::find($id);
+
+        $pessoa->delete();
+        
+        return redirect('/pessoas');
     }
 }
