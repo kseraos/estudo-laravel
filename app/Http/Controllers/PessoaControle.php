@@ -13,7 +13,9 @@ class PessoaControle extends Controller
      */
     public function index()
     {
-        return view('pessoas.index');
+        //$pessoas = \App\Pessoa::all();
+        $pessoas = \App\Pessoa::paginate (10);
+        return view('pessoas.index', compact('pessoas'));
     }
 
     public function create()
@@ -25,7 +27,6 @@ class PessoaControle extends Controller
     public function store(Request $request)
     {
         $pessoa= new \App\Pessoa();
-        
         $pessoa->nome =$request->nome;
         $pessoa->telefone=$request->telefone;
         $pessoa->email =$request->email;
