@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Pessoa;
-
 use Illuminate\Http\Request;
+use App\Pessoa;
+use App\Http\Requests\StorePessoaPost;
 
 class PessoaControle extends Controller
 {
@@ -25,7 +25,7 @@ class PessoaControle extends Controller
     }
 
    
-    public function store(Request $request)
+    public function store(StorePessoaPost $request)
     {
        /* $pessoa= new Pessoa();
         $pessoa->nome =$request->nome;
@@ -33,11 +33,12 @@ class PessoaControle extends Controller
         $pessoa->email =$request->email;
 
         $pessoa->save();
-        */
+       
         $request->validate([
             'nome' => 'required',
             'telefone' =>'required'
         ]);
+         */
 
         Pessoa::create($request->all());
         return redirect('/pessoas');
@@ -54,7 +55,7 @@ class PessoaControle extends Controller
         return view('pessoas.form', compact('pessoa'));
     }
 
-    public function update(Request $request, Pessoa $pessoa)
+    public function update(StorePessoaPost $request, Pessoa $pessoa)
     {
 
         /*$pessoa->nome =$request->nome;
