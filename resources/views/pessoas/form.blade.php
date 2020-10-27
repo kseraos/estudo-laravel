@@ -15,10 +15,16 @@
     
     <form action="/pessoas" method="post">
         @csrf
-        <input type="text" name="nome" placeholder="Nome" value="{{ $pessoa->nome ?? ''}}">
-        <input type="text" name="telefone" placeholder="Telefone" value="{{ $pessoa->telefone ?? ''}}" >
-        <input type="email" name="email" placeholder="Email" value="{{ $pessoa->email ?? '' }}">
-        <input type="submit" value="Salvar">
+        <input class ="form-control" type="text" name="nome" placeholder="Nome" value="{{ $pessoa->nome ?? ''}}">
+        @error('nome')
+        <small class "text-danger"> {{ $message}}<small>
+        @enderror
+        <input class ="form-control" type="text" name="telefone" placeholder="Telefone" value="{{ $pessoa->telefone ?? ''}}">
+        @error('telefone')
+        <small class "text-danger"> {{ $message}}<small>
+        @enderror
+        <input class ="form-control" type="email" name="email" placeholder="Email" value="{{ $pessoa->email ?? '' }}">
+        <input class ="btn btn-primary"  type="submit" value="Salvar">
     
     </form>
 
