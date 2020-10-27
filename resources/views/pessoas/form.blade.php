@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Formulario de pessoas</title>
-</head>
+@extends('template.base')
+@section('titulo', 'Formulario de Pessoas')
+@section('conteudo')
 <body>
     <h1>Formaulario de Pessoas</h1>
 
@@ -28,5 +23,5 @@
     </form>
 
     <a href="/pessoas"> Voltar </a>
-</body>
-</html>
+
+@endsection
