@@ -26,5 +26,11 @@ Route::put('pessoas/{pessoa}', 'PessoaControle@update');
 Route::get('pessoas/{pessoa}', 'PessoaControle@show');
 Route::delete('pessoas/{pessoa}', 'PessoaControle@destroy');
 */
-Route::resource('pessoas', 'PessoaControle');
 
+
+Route:: middleware('auth')->group(function(){
+    Route::resource('pessoas', 'PessoaControle');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
