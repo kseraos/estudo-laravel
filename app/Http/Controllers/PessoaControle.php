@@ -16,6 +16,7 @@ class PessoaControle extends Controller
     {
         //$pessoas = \App\Pessoa::all();
         //$pessoas = Pessoa::paginate (10);
+        //DB::enableQueryLog();  
         $pessoas = auth()->user()->pessoas()->paginate(10);
         return view('pessoas.index', compact('pessoas'));
     }
